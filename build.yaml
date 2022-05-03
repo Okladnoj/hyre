@@ -1,0 +1,10 @@
+targets:
+  $default:
+    builders:
+      graphql_codegen:
+        options:
+          scalars:
+            ISODateTime:
+              type: DateTime
+            JSON:
+              type: Map<String, dynamic>
