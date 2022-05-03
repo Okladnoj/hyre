@@ -10,8 +10,6 @@ targets:
               type: DateTime
             Date:
               type: DateTime
-            JSONString:
-              type: Map<String, dynamic>
             JSON:
               type: Map<String, dynamic>
             #Пока используем double возможно потом тип поменяется

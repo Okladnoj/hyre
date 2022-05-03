@@ -1,8 +1,11 @@
-query FetchProducts() {
-    products{
+query FetchProducts($first: Int!, $channel: String!) {
+    products(first: $first, channel: $channel){
         edges{
             node{
                 id
+                name
+                description
+                seoTitle
             }
         }
     }

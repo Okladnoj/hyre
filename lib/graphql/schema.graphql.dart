@@ -1162,7 +1162,7 @@ class InputAttributeValueCreateInput {
 
   final String? value;
 
-  final Map<String, dynamic>? richText;
+  final String? richText;
 
   final String? fileUrl;
 
@@ -1260,7 +1260,7 @@ class InputAttributeValueInput {
 
   final List<String>? references;
 
-  final Map<String, dynamic>? richText;
+  final String? richText;
 
   final bool? boolean;
 
@@ -1359,7 +1359,7 @@ class InputAttributeValueTranslationInput {
 
   final String? name;
 
-  final Map<String, dynamic>? richText;
+  final String? richText;
 
   Map<String, dynamic> toJson() =>
       _$InputAttributeValueTranslationInputToJson(this);
@@ -1395,7 +1395,7 @@ class InputAttributeValueUpdateInput {
 
   final String? value;
 
-  final Map<String, dynamic>? richText;
+  final String? richText;
 
   final String? fileUrl;
 
@@ -1704,7 +1704,7 @@ class InputCategoryInput {
   factory InputCategoryInput.fromJson(Map<String, dynamic> json) =>
       _$InputCategoryInputFromJson(json);
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   final String? name;
 
@@ -2332,7 +2332,7 @@ class InputCollectionCreateInput {
 
   final String? slug;
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   final String? backgroundImage;
 
@@ -2516,7 +2516,7 @@ class InputCollectionInput {
 
   final String? slug;
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   final String? backgroundImage;
 
@@ -3742,7 +3742,7 @@ class InputExternalNotificationTriggerInput {
 
   final List<String?> ids;
 
-  final Map<String, dynamic>? extraPayload;
+  final String? extraPayload;
 
   final String externalEventType;
 
@@ -6165,7 +6165,7 @@ class InputPageCreateInput {
 
   final String? title;
 
-  final Map<String, dynamic>? content;
+  final String? content;
 
   final List<InputAttributeValueInput>? attributes;
 
@@ -6342,7 +6342,7 @@ class InputPageInput {
 
   final String? title;
 
-  final Map<String, dynamic>? content;
+  final String? content;
 
   final List<InputAttributeValueInput>? attributes;
 
@@ -6463,7 +6463,7 @@ class InputPageTranslationInput {
 
   final String? title;
 
-  final Map<String, dynamic>? content;
+  final String? content;
 
   Map<String, dynamic> toJson() => _$InputPageTranslationInputToJson(this);
   int get hashCode {
@@ -7689,7 +7689,7 @@ class InputProductCreateInput {
 
   final List<String>? collections;
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   final String? name;
 
@@ -8053,7 +8053,7 @@ class InputProductInput {
 
   final List<String>? collections;
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   final String? name;
 
@@ -9762,7 +9762,7 @@ class InputShippingPriceInput {
 
   final String? name;
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   final String? minimumOrderWeight;
 
@@ -9895,7 +9895,7 @@ class InputShippingPriceTranslationInput {
 
   final String? name;
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   Map<String, dynamic> toJson() =>
       _$InputShippingPriceTranslationInputToJson(this);
@@ -10879,7 +10879,7 @@ class InputTranslationInput {
 
   final String? name;
 
-  final Map<String, dynamic>? description;
+  final String? description;
 
   Map<String, dynamic> toJson() => _$InputTranslationInputToJson(this);
   int get hashCode {

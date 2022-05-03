@@ -8,7 +8,7 @@ import 'graphql/schema.graphql.dart';
 
 final productsQuery = """
 {
-  products(first: 5, channel: "default-channel") {
+  products(first: 1, channel: "default-channel") {
     edges {
       node {
         id
@@ -50,18 +50,34 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _body() {
+    final mainQuery = QUERY_FETCH_PRODUCTS;
+    final stringQuery = gql(productsQuery);
     return Center(
-      child: Query(
-          options: QueryOptions(document: gql(productsQuery)),
+      child: Query<QueryFetchProducts>(
+          options: QueryOptions(
+              document: mainQuery,
+              variables: VariablesQueryFetchProducts(
+                      first: 1, channel: "default-channel")
+                  .toJson(),
+              parserFn: (Map<String, dynamic> data) {
+                return QueryFetchProducts.fromJson(data);
+              }),
           builder: (result, {fetchMore, refetch}) {
             if (result.hasException) {
+              log(result.exception.toString());
               return const Text("ERROR");
             }
             if (result.isLoading) {
               return const CircularProgressIndicator();
             }
             log(result.data.toString());
-            // result.parsedData;
+            final parsedData = QueryFetchProducts.fromJson(result.data!);
+            log(parsedData.toJson().toString());
+            
+            log((result.parsedData).toString());
+
+            // final res = (result.parsedData == null).toString();
+            // log(res);
 
             return const Text("qwe");
           }),

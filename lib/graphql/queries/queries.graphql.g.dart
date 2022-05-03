@@ -6,6 +6,20 @@ part of 'queries.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+VariablesQueryFetchProducts _$VariablesQueryFetchProductsFromJson(
+        Map<String, dynamic> json) =>
+    VariablesQueryFetchProducts(
+      first: json['first'] as int,
+      channel: json['channel'] as String,
+    );
+
+Map<String, dynamic> _$VariablesQueryFetchProductsToJson(
+        VariablesQueryFetchProducts instance) =>
+    <String, dynamic>{
+      'first': instance.first,
+      'channel': instance.channel,
+    };
+
 QueryFetchProducts _$QueryFetchProductsFromJson(Map<String, dynamic> json) =>
     QueryFetchProducts(
       products: json['products'] == null
@@ -58,6 +72,9 @@ QueryFetchProducts$products$edges$node
             Map<String, dynamic> json) =>
         QueryFetchProducts$products$edges$node(
           id: json['id'] as String,
+          name: json['name'] as String,
+          description: json['description'] as String?,
+          seoTitle: json['seoTitle'] as String?,
           $__typename: json['__typename'] as String,
         );
 
@@ -65,5 +82,8 @@ Map<String, dynamic> _$QueryFetchProducts$products$edges$nodeToJson(
         QueryFetchProducts$products$edges$node instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+      'seoTitle': instance.seoTitle,
       '__typename': instance.$__typename,
     };

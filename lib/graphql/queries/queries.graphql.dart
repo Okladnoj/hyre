@@ -3,6 +3,40 @@ import 'package:json_annotation/json_annotation.dart';
 part 'queries.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class VariablesQueryFetchProducts {
+  VariablesQueryFetchProducts({required this.first, required this.channel});
+
+  @override
+  factory VariablesQueryFetchProducts.fromJson(Map<String, dynamic> json) =>
+      _$VariablesQueryFetchProductsFromJson(json);
+
+  final int first;
+
+  final String channel;
+
+  Map<String, dynamic> toJson() => _$VariablesQueryFetchProductsToJson(this);
+  int get hashCode {
+    final l$first = first;
+    final l$channel = channel;
+    return Object.hashAll([l$first, l$channel]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is VariablesQueryFetchProducts) ||
+        runtimeType != other.runtimeType) return false;
+    final l$first = first;
+    final lOther$first = other.first;
+    if (l$first != lOther$first) return false;
+    final l$channel = channel;
+    final lOther$channel = other.channel;
+    if (l$channel != lOther$channel) return false;
+    return true;
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class QueryFetchProducts {
   QueryFetchProducts({this.products, required this.$__typename});
 
@@ -50,13 +84,32 @@ const QUERY_FETCH_PRODUCTS = const DocumentNode(definitions: [
   OperationDefinitionNode(
       type: OperationType.query,
       name: NameNode(value: 'FetchProducts'),
-      variableDefinitions: [],
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'first')),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'channel')),
+            type:
+                NamedTypeNode(name: NameNode(value: 'String'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
       directives: [],
       selectionSet: SelectionSetNode(selections: [
         FieldNode(
             name: NameNode(value: 'products'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first'))),
+              ArgumentNode(
+                  name: NameNode(value: 'channel'),
+                  value: VariableNode(name: NameNode(value: 'channel')))
+            ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
@@ -73,6 +126,24 @@ const QUERY_FETCH_PRODUCTS = const DocumentNode(definitions: [
                         selectionSet: SelectionSetNode(selections: [
                           FieldNode(
                               name: NameNode(value: 'id'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'name'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'description'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'seoTitle'),
                               alias: null,
                               arguments: [],
                               directives: [],
@@ -210,7 +281,11 @@ extension UtilityExtensionQueryFetchProducts$products$edges
 @JsonSerializable(explicitToJson: true)
 class QueryFetchProducts$products$edges$node {
   QueryFetchProducts$products$edges$node(
-      {required this.id, required this.$__typename});
+      {required this.id,
+      required this.name,
+      this.description,
+      this.seoTitle,
+      required this.$__typename});
 
   @override
   factory QueryFetchProducts$products$edges$node.fromJson(
@@ -219,6 +294,12 @@ class QueryFetchProducts$products$edges$node {
 
   final String id;
 
+  final String name;
+
+  final String? description;
+
+  final String? seoTitle;
+
   @JsonKey(name: '__typename')
   final String $__typename;
 
@@ -226,8 +307,12 @@ class QueryFetchProducts$products$edges$node {
       _$QueryFetchProducts$products$edges$nodeToJson(this);
   int get hashCode {
     final l$id = id;
+    final l$name = name;
+    final l$description = description;
+    final l$seoTitle = seoTitle;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll(
+        [l$id, l$name, l$description, l$seoTitle, l$$__typename]);
   }
 
   @override
@@ -238,6 +323,15 @@ class QueryFetchProducts$products$edges$node {
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) return false;
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) return false;
+    final l$description = description;
+    final lOther$description = other.description;
+    if (l$description != lOther$description) return false;
+    final l$seoTitle = seoTitle;
+    final lOther$seoTitle = other.seoTitle;
+    if (l$seoTitle != lOther$seoTitle) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -248,8 +342,15 @@ class QueryFetchProducts$products$edges$node {
 extension UtilityExtensionQueryFetchProducts$products$edges$node
     on QueryFetchProducts$products$edges$node {
   QueryFetchProducts$products$edges$node copyWith(
-          {String? id, String? $__typename}) =>
+          {String? id,
+          String? name,
+          String? Function()? description,
+          String? Function()? seoTitle,
+          String? $__typename}) =>
       QueryFetchProducts$products$edges$node(
           id: id == null ? this.id : id,
+          name: name == null ? this.name : name,
+          description: description == null ? this.description : description(),
+          seoTitle: seoTitle == null ? this.seoTitle : seoTitle(),
           $__typename: $__typename == null ? this.$__typename : $__typename);
 }

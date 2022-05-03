@@ -1577,7 +1577,7 @@ InputAttributeValueCreateInput _$InputAttributeValueCreateInputFromJson(
         Map<String, dynamic> json) =>
     InputAttributeValueCreateInput(
       value: json['value'] as String?,
-      richText: json['richText'] as Map<String, dynamic>?,
+      richText: json['richText'] as String?,
       fileUrl: json['fileUrl'] as String?,
       contentType: json['contentType'] as String?,
       name: json['name'] as String,
@@ -1616,7 +1616,7 @@ InputAttributeValueInput _$InputAttributeValueInputFromJson(
       references: (json['references'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      richText: json['richText'] as Map<String, dynamic>?,
+      richText: json['richText'] as String?,
       boolean: json['boolean'] as bool?,
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
@@ -1643,7 +1643,7 @@ InputAttributeValueTranslationInput
     _$InputAttributeValueTranslationInputFromJson(Map<String, dynamic> json) =>
         InputAttributeValueTranslationInput(
           name: json['name'] as String?,
-          richText: json['richText'] as Map<String, dynamic>?,
+          richText: json['richText'] as String?,
         );
 
 Map<String, dynamic> _$InputAttributeValueTranslationInputToJson(
@@ -1657,7 +1657,7 @@ InputAttributeValueUpdateInput _$InputAttributeValueUpdateInputFromJson(
         Map<String, dynamic> json) =>
     InputAttributeValueUpdateInput(
       value: json['value'] as String?,
-      richText: json['richText'] as Map<String, dynamic>?,
+      richText: json['richText'] as String?,
       fileUrl: json['fileUrl'] as String?,
       contentType: json['contentType'] as String?,
       name: json['name'] as String?,
@@ -1751,7 +1751,7 @@ Map<String, dynamic> _$InputCategoryFilterInputToJson(
 
 InputCategoryInput _$InputCategoryInputFromJson(Map<String, dynamic> json) =>
     InputCategoryInput(
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       seo: json['seo'] == null
@@ -1988,7 +1988,7 @@ InputCollectionCreateInput _$InputCollectionCreateInputFromJson(
       isPublished: json['isPublished'] as bool?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
       backgroundImage: json['backgroundImage'] as String?,
       backgroundImageAlt: json['backgroundImageAlt'] as String?,
       seo: json['seo'] == null
@@ -2054,7 +2054,7 @@ InputCollectionInput _$InputCollectionInputFromJson(
       isPublished: json['isPublished'] as bool?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
       backgroundImage: json['backgroundImage'] as String?,
       backgroundImageAlt: json['backgroundImageAlt'] as String?,
       seo: json['seo'] == null
@@ -2655,7 +2655,7 @@ InputExternalNotificationTriggerInput
             Map<String, dynamic> json) =>
         InputExternalNotificationTriggerInput(
           ids: (json['ids'] as List<dynamic>).map((e) => e as String?).toList(),
-          extraPayload: json['extraPayload'] as Map<String, dynamic>?,
+          extraPayload: json['extraPayload'] as String?,
           externalEventType: json['externalEventType'] as String,
         );
 
@@ -3627,7 +3627,7 @@ InputPageCreateInput _$InputPageCreateInputFromJson(
     InputPageCreateInput(
       slug: json['slug'] as String?,
       title: json['title'] as String?,
-      content: json['content'] as Map<String, dynamic>?,
+      content: json['content'] as String?,
       attributes: (json['attributes'] as List<dynamic>?)
           ?.map((e) =>
               InputAttributeValueInput.fromJson(e as Map<String, dynamic>))
@@ -3681,7 +3681,7 @@ InputPageInput _$InputPageInputFromJson(Map<String, dynamic> json) =>
     InputPageInput(
       slug: json['slug'] as String?,
       title: json['title'] as String?,
-      content: json['content'] as Map<String, dynamic>?,
+      content: json['content'] as String?,
       attributes: (json['attributes'] as List<dynamic>?)
           ?.map((e) =>
               InputAttributeValueInput.fromJson(e as Map<String, dynamic>))
@@ -3735,7 +3735,7 @@ InputPageTranslationInput _$InputPageTranslationInputFromJson(
       seoTitle: json['seoTitle'] as String?,
       seoDescription: json['seoDescription'] as String?,
       title: json['title'] as String?,
-      content: json['content'] as Map<String, dynamic>?,
+      content: json['content'] as String?,
     );
 
 Map<String, dynamic> _$InputPageTranslationInputToJson(
@@ -4207,7 +4207,7 @@ InputProductCreateInput _$InputProductCreateInputFromJson(
       collections: (json['collections'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       taxCode: json['taxCode'] as String?,
@@ -4326,7 +4326,7 @@ InputProductInput _$InputProductInputFromJson(Map<String, dynamic> json) =>
       collections: (json['collections'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       taxCode: json['taxCode'] as String?,
@@ -4974,7 +4974,7 @@ InputShippingPriceInput _$InputShippingPriceInputFromJson(
         Map<String, dynamic> json) =>
     InputShippingPriceInput(
       name: json['name'] as String?,
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
       minimumOrderWeight: json['minimumOrderWeight'] as String?,
       maximumOrderWeight: json['maximumOrderWeight'] as String?,
       maximumDeliveryDays: json['maximumDeliveryDays'] as int?,
@@ -5029,7 +5029,7 @@ InputShippingPriceTranslationInput _$InputShippingPriceTranslationInputFromJson(
         Map<String, dynamic> json) =>
     InputShippingPriceTranslationInput(
       name: json['name'] as String?,
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$InputShippingPriceTranslationInputToJson(
@@ -5359,7 +5359,7 @@ InputTranslationInput _$InputTranslationInputFromJson(
       seoTitle: json['seoTitle'] as String?,
       seoDescription: json['seoDescription'] as String?,
       name: json['name'] as String?,
-      description: json['description'] as Map<String, dynamic>?,
+      description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$InputTranslationInputToJson(
