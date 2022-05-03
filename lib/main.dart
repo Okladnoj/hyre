@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hyre/graphql/queries/queries.graphql.dart';
 
 import 'graphql/schema.graphql.dart';
 
@@ -67,3 +68,19 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// return Center(
+//       child: Query(
+//           options: QueryOptions(document: gql(productsQuery)),
+//           builder: (result, {fetchMore, refetch}) {
+//             if (result.hasException) {
+//               return const Text("ERROR");
+//             }
+//             if (result.isLoading) {
+//               return const CircularProgressIndicator();
+//             }
+//             log(result.data.toString());
+//             // result.parsedData;
+
+//             return const Text("qwe");
+//           }),
+//     );

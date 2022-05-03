@@ -1577,7 +1577,7 @@ InputAttributeValueCreateInput _$InputAttributeValueCreateInputFromJson(
         Map<String, dynamic> json) =>
     InputAttributeValueCreateInput(
       value: json['value'] as String?,
-      richText: json['richText'] as String?,
+      richText: json['richText'] as Map<String, dynamic>?,
       fileUrl: json['fileUrl'] as String?,
       contentType: json['contentType'] as String?,
       name: json['name'] as String,
@@ -1616,10 +1616,13 @@ InputAttributeValueInput _$InputAttributeValueInputFromJson(
       references: (json['references'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      richText: json['richText'] as String?,
+      richText: json['richText'] as Map<String, dynamic>?,
       boolean: json['boolean'] as bool?,
-      date: json['date'] as String?,
-      dateTime: json['dateTime'] as String?,
+      date:
+          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      dateTime: json['dateTime'] == null
+          ? null
+          : DateTime.parse(json['dateTime'] as String),
     );
 
 Map<String, dynamic> _$InputAttributeValueInputToJson(
@@ -1632,15 +1635,15 @@ Map<String, dynamic> _$InputAttributeValueInputToJson(
       'references': instance.references,
       'richText': instance.richText,
       'boolean': instance.boolean,
-      'date': instance.date,
-      'dateTime': instance.dateTime,
+      'date': instance.date?.toIso8601String(),
+      'dateTime': instance.dateTime?.toIso8601String(),
     };
 
 InputAttributeValueTranslationInput
     _$InputAttributeValueTranslationInputFromJson(Map<String, dynamic> json) =>
         InputAttributeValueTranslationInput(
           name: json['name'] as String?,
-          richText: json['richText'] as String?,
+          richText: json['richText'] as Map<String, dynamic>?,
         );
 
 Map<String, dynamic> _$InputAttributeValueTranslationInputToJson(
@@ -1654,7 +1657,7 @@ InputAttributeValueUpdateInput _$InputAttributeValueUpdateInputFromJson(
         Map<String, dynamic> json) =>
     InputAttributeValueUpdateInput(
       value: json['value'] as String?,
-      richText: json['richText'] as String?,
+      richText: json['richText'] as Map<String, dynamic>?,
       fileUrl: json['fileUrl'] as String?,
       contentType: json['contentType'] as String?,
       name: json['name'] as String?,
@@ -1748,7 +1751,7 @@ Map<String, dynamic> _$InputCategoryFilterInputToJson(
 
 InputCategoryInput _$InputCategoryInputFromJson(Map<String, dynamic> json) =>
     InputCategoryInput(
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       seo: json['seo'] == null
@@ -1985,13 +1988,15 @@ InputCollectionCreateInput _$InputCollectionCreateInputFromJson(
       isPublished: json['isPublished'] as bool?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
       backgroundImage: json['backgroundImage'] as String?,
       backgroundImageAlt: json['backgroundImageAlt'] as String?,
       seo: json['seo'] == null
           ? null
           : InputSeoInput.fromJson(json['seo'] as Map<String, dynamic>),
-      publicationDate: json['publicationDate'] as String?,
+      publicationDate: json['publicationDate'] == null
+          ? null
+          : DateTime.parse(json['publicationDate'] as String),
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
@@ -2007,7 +2012,7 @@ Map<String, dynamic> _$InputCollectionCreateInputToJson(
       'backgroundImage': instance.backgroundImage,
       'backgroundImageAlt': instance.backgroundImageAlt,
       'seo': instance.seo?.toJson(),
-      'publicationDate': instance.publicationDate,
+      'publicationDate': instance.publicationDate?.toIso8601String(),
       'products': instance.products,
     };
 
@@ -2049,13 +2054,15 @@ InputCollectionInput _$InputCollectionInputFromJson(
       isPublished: json['isPublished'] as bool?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
       backgroundImage: json['backgroundImage'] as String?,
       backgroundImageAlt: json['backgroundImageAlt'] as String?,
       seo: json['seo'] == null
           ? null
           : InputSeoInput.fromJson(json['seo'] as Map<String, dynamic>),
-      publicationDate: json['publicationDate'] as String?,
+      publicationDate: json['publicationDate'] == null
+          ? null
+          : DateTime.parse(json['publicationDate'] as String),
     );
 
 Map<String, dynamic> _$InputCollectionInputToJson(
@@ -2068,7 +2075,7 @@ Map<String, dynamic> _$InputCollectionInputToJson(
       'backgroundImage': instance.backgroundImage,
       'backgroundImageAlt': instance.backgroundImageAlt,
       'seo': instance.seo?.toJson(),
-      'publicationDate': instance.publicationDate,
+      'publicationDate': instance.publicationDate?.toIso8601String(),
     };
 
 InputCollectionSortingInput _$InputCollectionSortingInputFromJson(
@@ -2195,29 +2202,29 @@ Map<String, dynamic> _$InputCustomerInputToJson(InputCustomerInput instance) =>
 
 InputDateRangeInput _$InputDateRangeInputFromJson(Map<String, dynamic> json) =>
     InputDateRangeInput(
-      gte: json['gte'] as String?,
-      lte: json['lte'] as String?,
+      gte: json['gte'] == null ? null : DateTime.parse(json['gte'] as String),
+      lte: json['lte'] == null ? null : DateTime.parse(json['lte'] as String),
     );
 
 Map<String, dynamic> _$InputDateRangeInputToJson(
         InputDateRangeInput instance) =>
     <String, dynamic>{
-      'gte': instance.gte,
-      'lte': instance.lte,
+      'gte': instance.gte?.toIso8601String(),
+      'lte': instance.lte?.toIso8601String(),
     };
 
 InputDateTimeRangeInput _$InputDateTimeRangeInputFromJson(
         Map<String, dynamic> json) =>
     InputDateTimeRangeInput(
-      gte: json['gte'] as String?,
-      lte: json['lte'] as String?,
+      gte: json['gte'] == null ? null : DateTime.parse(json['gte'] as String),
+      lte: json['lte'] == null ? null : DateTime.parse(json['lte'] as String),
     );
 
 Map<String, dynamic> _$InputDateTimeRangeInputToJson(
         InputDateTimeRangeInput instance) =>
     <String, dynamic>{
-      'gte': instance.gte,
-      'lte': instance.lte,
+      'gte': instance.gte?.toIso8601String(),
+      'lte': instance.lte?.toIso8601String(),
     };
 
 InputDigitalContentInput _$InputDigitalContentInputFromJson(
@@ -2279,7 +2286,7 @@ InputDraftOrderCreateInput _$InputDraftOrderCreateInputFromJson(
               json['billingAddress'] as Map<String, dynamic>),
       user: json['user'] as String?,
       userEmail: json['userEmail'] as String?,
-      discount: json['discount'] as String?,
+      discount: (json['discount'] as num?)?.toDouble(),
       shippingAddress: json['shippingAddress'] == null
           ? null
           : InputAddressInput.fromJson(
@@ -2321,7 +2328,7 @@ InputDraftOrderInput _$InputDraftOrderInputFromJson(
               json['billingAddress'] as Map<String, dynamic>),
       user: json['user'] as String?,
       userEmail: json['userEmail'] as String?,
-      discount: json['discount'] as String?,
+      discount: (json['discount'] as num?)?.toDouble(),
       shippingAddress: json['shippingAddress'] == null
           ? null
           : InputAddressInput.fromJson(
@@ -2648,7 +2655,7 @@ InputExternalNotificationTriggerInput
             Map<String, dynamic> json) =>
         InputExternalNotificationTriggerInput(
           ids: (json['ids'] as List<dynamic>).map((e) => e as String?).toList(),
-          extraPayload: json['extraPayload'] as String?,
+          extraPayload: json['extraPayload'] as Map<String, dynamic>?,
           externalEventType: json['externalEventType'] as String,
         );
 
@@ -2705,7 +2712,9 @@ InputGiftCardBulkCreateInput _$InputGiftCardBulkCreateInputFromJson(
       balance:
           InputPriceInput.fromJson(json['balance'] as Map<String, dynamic>),
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      expiryDate: json['expiryDate'] as String?,
+      expiryDate: json['expiryDate'] == null
+          ? null
+          : DateTime.parse(json['expiryDate'] as String),
       isActive: json['isActive'] as bool,
     );
 
@@ -2715,7 +2724,7 @@ Map<String, dynamic> _$InputGiftCardBulkCreateInputToJson(
       'count': instance.count,
       'balance': instance.balance.toJson(),
       'tags': instance.tags,
-      'expiryDate': instance.expiryDate,
+      'expiryDate': instance.expiryDate?.toIso8601String(),
       'isActive': instance.isActive,
     };
 
@@ -2724,9 +2733,15 @@ InputGiftCardCreateInput _$InputGiftCardCreateInputFromJson(
     InputGiftCardCreateInput(
       addTags:
           (json['addTags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      expiryDate: json['expiryDate'] as String?,
-      startDate: json['startDate'] as String?,
-      endDate: json['endDate'] as String?,
+      expiryDate: json['expiryDate'] == null
+          ? null
+          : DateTime.parse(json['expiryDate'] as String),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
       balance:
           InputPriceInput.fromJson(json['balance'] as Map<String, dynamic>),
       userEmail: json['userEmail'] as String?,
@@ -2740,9 +2755,9 @@ Map<String, dynamic> _$InputGiftCardCreateInputToJson(
         InputGiftCardCreateInput instance) =>
     <String, dynamic>{
       'addTags': instance.addTags,
-      'expiryDate': instance.expiryDate,
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
+      'expiryDate': instance.expiryDate?.toIso8601String(),
+      'startDate': instance.startDate?.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
       'balance': instance.balance.toJson(),
       'userEmail': instance.userEmail,
       'channel': instance.channel,
@@ -2908,22 +2923,28 @@ InputGiftCardUpdateInput _$InputGiftCardUpdateInputFromJson(
     InputGiftCardUpdateInput(
       addTags:
           (json['addTags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      expiryDate: json['expiryDate'] as String?,
-      startDate: json['startDate'] as String?,
-      endDate: json['endDate'] as String?,
+      expiryDate: json['expiryDate'] == null
+          ? null
+          : DateTime.parse(json['expiryDate'] as String),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
       removeTags: (json['removeTags'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      balanceAmount: json['balanceAmount'] as String?,
+      balanceAmount: (json['balanceAmount'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$InputGiftCardUpdateInputToJson(
         InputGiftCardUpdateInput instance) =>
     <String, dynamic>{
       'addTags': instance.addTags,
-      'expiryDate': instance.expiryDate,
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
+      'expiryDate': instance.expiryDate?.toIso8601String(),
+      'startDate': instance.startDate?.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
       'removeTags': instance.removeTags,
       'balanceAmount': instance.balanceAmount,
     };
@@ -3153,7 +3174,7 @@ Map<String, dynamic> _$InputMetadataInputToJson(InputMetadataInput instance) =>
 InputMoneyInput _$InputMoneyInputFromJson(Map<String, dynamic> json) =>
     InputMoneyInput(
       currency: json['currency'] as String,
-      amount: json['amount'] as String,
+      amount: (json['amount'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$InputMoneyInputToJson(InputMoneyInput instance) =>
@@ -3206,7 +3227,7 @@ InputOrderDiscountCommonInput _$InputOrderDiscountCommonInputFromJson(
       valueType: $enumDecode(
           _$EnumDiscountValueTypeEnumEnumMap, json['valueType'],
           unknownValue: EnumDiscountValueTypeEnum.$unknown),
-      value: json['value'] as String,
+      value: (json['value'] as num).toDouble(),
       reason: json['reason'] as String?,
     );
 
@@ -3449,7 +3470,7 @@ InputOrderRefundProductsInput _$InputOrderRefundProductsInputFromJson(
           ?.map((e) => InputOrderRefundFulfillmentLineInput.fromJson(
               e as Map<String, dynamic>))
           .toList(),
-      amountToRefund: json['amountToRefund'] as String?,
+      amountToRefund: (json['amountToRefund'] as num?)?.toDouble(),
       includeShippingCosts: json['includeShippingCosts'] as bool?,
     );
 
@@ -3506,7 +3527,7 @@ InputOrderReturnProductsInput _$InputOrderReturnProductsInputFromJson(
           ?.map((e) => InputOrderReturnFulfillmentLineInput.fromJson(
               e as Map<String, dynamic>))
           .toList(),
-      amountToRefund: json['amountToRefund'] as String?,
+      amountToRefund: (json['amountToRefund'] as num?)?.toDouble(),
       includeShippingCosts: json['includeShippingCosts'] as bool?,
       refund: json['refund'] as bool?,
     );
@@ -3606,7 +3627,7 @@ InputPageCreateInput _$InputPageCreateInputFromJson(
     InputPageCreateInput(
       slug: json['slug'] as String?,
       title: json['title'] as String?,
-      content: json['content'] as String?,
+      content: json['content'] as Map<String, dynamic>?,
       attributes: (json['attributes'] as List<dynamic>?)
           ?.map((e) =>
               InputAttributeValueInput.fromJson(e as Map<String, dynamic>))
@@ -3660,7 +3681,7 @@ InputPageInput _$InputPageInputFromJson(Map<String, dynamic> json) =>
     InputPageInput(
       slug: json['slug'] as String?,
       title: json['title'] as String?,
-      content: json['content'] as String?,
+      content: json['content'] as Map<String, dynamic>?,
       attributes: (json['attributes'] as List<dynamic>?)
           ?.map((e) =>
               InputAttributeValueInput.fromJson(e as Map<String, dynamic>))
@@ -3714,7 +3735,7 @@ InputPageTranslationInput _$InputPageTranslationInputFromJson(
       seoTitle: json['seoTitle'] as String?,
       seoDescription: json['seoDescription'] as String?,
       title: json['title'] as String?,
-      content: json['content'] as String?,
+      content: json['content'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$InputPageTranslationInputToJson(
@@ -3836,7 +3857,7 @@ InputPaymentInput _$InputPaymentInputFromJson(Map<String, dynamic> json) =>
     InputPaymentInput(
       gateway: json['gateway'] as String,
       token: json['token'] as String?,
-      amount: json['amount'] as String?,
+      amount: (json['amount'] as num?)?.toDouble(),
       returnUrl: json['returnUrl'] as String?,
       storePaymentMethod: $enumDecodeNullable(
           _$EnumStorePaymentMethodEnumEnumMap, json['storePaymentMethod'],
@@ -4042,20 +4063,22 @@ InputPreorderSettingsInput _$InputPreorderSettingsInputFromJson(
         Map<String, dynamic> json) =>
     InputPreorderSettingsInput(
       globalThreshold: json['globalThreshold'] as int?,
-      endDate: json['endDate'] as String?,
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
     );
 
 Map<String, dynamic> _$InputPreorderSettingsInputToJson(
         InputPreorderSettingsInput instance) =>
     <String, dynamic>{
       'globalThreshold': instance.globalThreshold,
-      'endDate': instance.endDate,
+      'endDate': instance.endDate?.toIso8601String(),
     };
 
 InputPriceInput _$InputPriceInputFromJson(Map<String, dynamic> json) =>
     InputPriceInput(
       currency: json['currency'] as String,
-      amount: json['amount'] as String,
+      amount: (json['amount'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$InputPriceInputToJson(InputPriceInput instance) =>
@@ -4121,10 +4144,14 @@ InputProductChannelListingAddInput _$InputProductChannelListingAddInputFromJson(
     InputProductChannelListingAddInput(
       channelId: json['channelId'] as String,
       isPublished: json['isPublished'] as bool?,
-      publicationDate: json['publicationDate'] as String?,
+      publicationDate: json['publicationDate'] == null
+          ? null
+          : DateTime.parse(json['publicationDate'] as String),
       visibleInListings: json['visibleInListings'] as bool?,
       isAvailableForPurchase: json['isAvailableForPurchase'] as bool?,
-      availableForPurchaseDate: json['availableForPurchaseDate'] as String?,
+      availableForPurchaseDate: json['availableForPurchaseDate'] == null
+          ? null
+          : DateTime.parse(json['availableForPurchaseDate'] as String),
       addVariants: (json['addVariants'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -4138,10 +4165,11 @@ Map<String, dynamic> _$InputProductChannelListingAddInputToJson(
     <String, dynamic>{
       'channelId': instance.channelId,
       'isPublished': instance.isPublished,
-      'publicationDate': instance.publicationDate,
+      'publicationDate': instance.publicationDate?.toIso8601String(),
       'visibleInListings': instance.visibleInListings,
       'isAvailableForPurchase': instance.isAvailableForPurchase,
-      'availableForPurchaseDate': instance.availableForPurchaseDate,
+      'availableForPurchaseDate':
+          instance.availableForPurchaseDate?.toIso8601String(),
       'addVariants': instance.addVariants,
       'removeVariants': instance.removeVariants,
     };
@@ -4179,7 +4207,7 @@ InputProductCreateInput _$InputProductCreateInputFromJson(
       collections: (json['collections'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       taxCode: json['taxCode'] as String?,
@@ -4298,7 +4326,7 @@ InputProductInput _$InputProductInputFromJson(Map<String, dynamic> json) =>
       collections: (json['collections'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       taxCode: json['taxCode'] as String?,
@@ -4559,8 +4587,8 @@ InputProductVariantChannelListingAddInput
             Map<String, dynamic> json) =>
         InputProductVariantChannelListingAddInput(
           channelId: json['channelId'] as String,
-          price: json['price'] as String,
-          costPrice: json['costPrice'] as String?,
+          price: (json['price'] as num).toDouble(),
+          costPrice: (json['costPrice'] as num?)?.toDouble(),
           preorderThreshold: json['preorderThreshold'] as int?,
         );
 
@@ -4688,7 +4716,9 @@ InputPublishableChannelListingInput
         InputPublishableChannelListingInput(
           channelId: json['channelId'] as String,
           isPublished: json['isPublished'] as bool?,
-          publicationDate: json['publicationDate'] as String?,
+          publicationDate: json['publicationDate'] == null
+              ? null
+              : DateTime.parse(json['publicationDate'] as String),
         );
 
 Map<String, dynamic> _$InputPublishableChannelListingInputToJson(
@@ -4696,7 +4726,7 @@ Map<String, dynamic> _$InputPublishableChannelListingInputToJson(
     <String, dynamic>{
       'channelId': instance.channelId,
       'isPublished': instance.isPublished,
-      'publicationDate': instance.publicationDate,
+      'publicationDate': instance.publicationDate?.toIso8601String(),
     };
 
 InputReorderInput _$InputReorderInputFromJson(Map<String, dynamic> json) =>
@@ -4715,7 +4745,7 @@ InputSaleChannelListingAddInput _$InputSaleChannelListingAddInputFromJson(
         Map<String, dynamic> json) =>
     InputSaleChannelListingAddInput(
       channelId: json['channelId'] as String,
-      discountValue: json['discountValue'] as String,
+      discountValue: (json['discountValue'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$InputSaleChannelListingAddInputToJson(
@@ -4796,7 +4826,7 @@ InputSaleInput _$InputSaleInputFromJson(Map<String, dynamic> json) =>
       type: $enumDecodeNullable(
           _$EnumDiscountValueTypeEnumEnumMap, json['type'],
           unknownValue: EnumDiscountValueTypeEnum.$unknown),
-      value: json['value'] as String?,
+      value: (json['value'] as num?)?.toDouble(),
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
@@ -4809,8 +4839,12 @@ InputSaleInput _$InputSaleInputFromJson(Map<String, dynamic> json) =>
       collections: (json['collections'] as List<dynamic>?)
           ?.map((e) => e as String?)
           .toList(),
-      startDate: json['startDate'] as String?,
-      endDate: json['endDate'] as String?,
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
     );
 
 Map<String, dynamic> _$InputSaleInputToJson(InputSaleInput instance) =>
@@ -4822,8 +4856,8 @@ Map<String, dynamic> _$InputSaleInputToJson(InputSaleInput instance) =>
       'variants': instance.variants,
       'categories': instance.categories,
       'collections': instance.collections,
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
+      'startDate': instance.startDate?.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
     };
 
 InputSaleSortingInput _$InputSaleSortingInputFromJson(
@@ -4872,9 +4906,9 @@ InputShippingMethodChannelListingAddInput
             Map<String, dynamic> json) =>
         InputShippingMethodChannelListingAddInput(
           channelId: json['channelId'] as String,
-          price: json['price'] as String?,
-          minimumOrderPrice: json['minimumOrderPrice'] as String?,
-          maximumOrderPrice: json['maximumOrderPrice'] as String?,
+          price: (json['price'] as num?)?.toDouble(),
+          minimumOrderPrice: (json['minimumOrderPrice'] as num?)?.toDouble(),
+          maximumOrderPrice: (json['maximumOrderPrice'] as num?)?.toDouble(),
         );
 
 Map<String, dynamic> _$InputShippingMethodChannelListingAddInputToJson(
@@ -4940,7 +4974,7 @@ InputShippingPriceInput _$InputShippingPriceInputFromJson(
         Map<String, dynamic> json) =>
     InputShippingPriceInput(
       name: json['name'] as String?,
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
       minimumOrderWeight: json['minimumOrderWeight'] as String?,
       maximumOrderWeight: json['maximumOrderWeight'] as String?,
       maximumDeliveryDays: json['maximumDeliveryDays'] as int?,
@@ -4995,7 +5029,7 @@ InputShippingPriceTranslationInput _$InputShippingPriceTranslationInputFromJson(
         Map<String, dynamic> json) =>
     InputShippingPriceTranslationInput(
       name: json['name'] as String?,
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$InputShippingPriceTranslationInputToJson(
@@ -5325,7 +5359,7 @@ InputTranslationInput _$InputTranslationInputFromJson(
       seoTitle: json['seoTitle'] as String?,
       seoDescription: json['seoDescription'] as String?,
       name: json['name'] as String?,
-      description: json['description'] as String?,
+      description: json['description'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$InputTranslationInputToJson(
@@ -5419,8 +5453,8 @@ InputVoucherChannelListingAddInput _$InputVoucherChannelListingAddInputFromJson(
         Map<String, dynamic> json) =>
     InputVoucherChannelListingAddInput(
       channelId: json['channelId'] as String,
-      discountValue: json['discountValue'] as String?,
-      minAmountSpent: json['minAmountSpent'] as String?,
+      discountValue: (json['discountValue'] as num?)?.toDouble(),
+      minAmountSpent: (json['minAmountSpent'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$InputVoucherChannelListingAddInputToJson(
@@ -5505,8 +5539,12 @@ InputVoucherInput _$InputVoucherInputFromJson(Map<String, dynamic> json) =>
           unknownValue: EnumVoucherTypeEnum.$unknown),
       name: json['name'] as String?,
       code: json['code'] as String?,
-      startDate: json['startDate'] as String?,
-      endDate: json['endDate'] as String?,
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
       discountValueType: $enumDecodeNullable(
           _$EnumDiscountValueTypeEnumEnumMap, json['discountValueType'],
           unknownValue: EnumDiscountValueTypeEnum.$unknown),
@@ -5537,8 +5575,8 @@ Map<String, dynamic> _$InputVoucherInputToJson(InputVoucherInput instance) =>
       'type': _$EnumVoucherTypeEnumEnumMap[instance.type],
       'name': instance.name,
       'code': instance.code,
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
+      'startDate': instance.startDate?.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
       'discountValueType':
           _$EnumDiscountValueTypeEnumEnumMap[instance.discountValueType],
       'products': instance.products,

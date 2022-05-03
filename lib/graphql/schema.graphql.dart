@@ -1162,7 +1162,7 @@ class InputAttributeValueCreateInput {
 
   final String? value;
 
-  final String? richText;
+  final Map<String, dynamic>? richText;
 
   final String? fileUrl;
 
@@ -1260,13 +1260,13 @@ class InputAttributeValueInput {
 
   final List<String>? references;
 
-  final String? richText;
+  final Map<String, dynamic>? richText;
 
   final bool? boolean;
 
-  final String? date;
+  final DateTime? date;
 
-  final String? dateTime;
+  final DateTime? dateTime;
 
   Map<String, dynamic> toJson() => _$InputAttributeValueInputToJson(this);
   int get hashCode {
@@ -1359,7 +1359,7 @@ class InputAttributeValueTranslationInput {
 
   final String? name;
 
-  final String? richText;
+  final Map<String, dynamic>? richText;
 
   Map<String, dynamic> toJson() =>
       _$InputAttributeValueTranslationInputToJson(this);
@@ -1395,7 +1395,7 @@ class InputAttributeValueUpdateInput {
 
   final String? value;
 
-  final String? richText;
+  final Map<String, dynamic>? richText;
 
   final String? fileUrl;
 
@@ -1704,7 +1704,7 @@ class InputCategoryInput {
   factory InputCategoryInput.fromJson(Map<String, dynamic> json) =>
       _$InputCategoryInputFromJson(json);
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   final String? name;
 
@@ -2332,7 +2332,7 @@ class InputCollectionCreateInput {
 
   final String? slug;
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   final String? backgroundImage;
 
@@ -2340,7 +2340,7 @@ class InputCollectionCreateInput {
 
   final InputSeoInput? seo;
 
-  final String? publicationDate;
+  final DateTime? publicationDate;
 
   final List<String?>? products;
 
@@ -2516,7 +2516,7 @@ class InputCollectionInput {
 
   final String? slug;
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   final String? backgroundImage;
 
@@ -2524,7 +2524,7 @@ class InputCollectionInput {
 
   final InputSeoInput? seo;
 
-  final String? publicationDate;
+  final DateTime? publicationDate;
 
   Map<String, dynamic> toJson() => _$InputCollectionInputToJson(this);
   int get hashCode {
@@ -2864,9 +2864,9 @@ class InputDateRangeInput {
   factory InputDateRangeInput.fromJson(Map<String, dynamic> json) =>
       _$InputDateRangeInputFromJson(json);
 
-  final String? gte;
+  final DateTime? gte;
 
-  final String? lte;
+  final DateTime? lte;
 
   Map<String, dynamic> toJson() => _$InputDateRangeInputToJson(this);
   int get hashCode {
@@ -2898,9 +2898,9 @@ class InputDateTimeRangeInput {
   factory InputDateTimeRangeInput.fromJson(Map<String, dynamic> json) =>
       _$InputDateTimeRangeInputFromJson(json);
 
-  final String? gte;
+  final DateTime? gte;
 
-  final String? lte;
+  final DateTime? lte;
 
   Map<String, dynamic> toJson() => _$InputDateTimeRangeInputToJson(this);
   int get hashCode {
@@ -3097,7 +3097,7 @@ class InputDraftOrderCreateInput {
 
   final String? userEmail;
 
-  final String? discount;
+  final double? discount;
 
   final InputAddressInput? shippingAddress;
 
@@ -3217,7 +3217,7 @@ class InputDraftOrderInput {
 
   final String? userEmail;
 
-  final String? discount;
+  final double? discount;
 
   final InputAddressInput? shippingAddress;
 
@@ -3742,7 +3742,7 @@ class InputExternalNotificationTriggerInput {
 
   final List<String?> ids;
 
-  final String? extraPayload;
+  final Map<String, dynamic>? extraPayload;
 
   final String externalEventType;
 
@@ -3895,7 +3895,7 @@ class InputGiftCardBulkCreateInput {
 
   final List<String>? tags;
 
-  final String? expiryDate;
+  final DateTime? expiryDate;
 
   final bool isActive;
 
@@ -3969,11 +3969,11 @@ class InputGiftCardCreateInput {
 
   final List<String>? addTags;
 
-  final String? expiryDate;
+  final DateTime? expiryDate;
 
-  final String? startDate;
+  final DateTime? startDate;
 
-  final String? endDate;
+  final DateTime? endDate;
 
   final InputPriceInput balance;
 
@@ -4411,15 +4411,15 @@ class InputGiftCardUpdateInput {
 
   final List<String>? addTags;
 
-  final String? expiryDate;
+  final DateTime? expiryDate;
 
-  final String? startDate;
+  final DateTime? startDate;
 
-  final String? endDate;
+  final DateTime? endDate;
 
   final List<String>? removeTags;
 
-  final String? balanceAmount;
+  final double? balanceAmount;
 
   Map<String, dynamic> toJson() => _$InputGiftCardUpdateInputToJson(this);
   int get hashCode {
@@ -5068,7 +5068,7 @@ class InputMoneyInput {
 
   final String currency;
 
-  final String amount;
+  final double amount;
 
   Map<String, dynamic> toJson() => _$InputMoneyInputToJson(this);
   int get hashCode {
@@ -5194,7 +5194,7 @@ class InputOrderDiscountCommonInput {
   @JsonKey(unknownEnumValue: EnumDiscountValueTypeEnum.$unknown)
   final EnumDiscountValueTypeEnum valueType;
 
-  final String value;
+  final double value;
 
   final String? reason;
 
@@ -5761,7 +5761,7 @@ class InputOrderRefundProductsInput {
 
   final List<InputOrderRefundFulfillmentLineInput>? fulfillmentLines;
 
-  final String? amountToRefund;
+  final double? amountToRefund;
 
   final bool? includeShippingCosts;
 
@@ -5925,7 +5925,7 @@ class InputOrderReturnProductsInput {
 
   final List<InputOrderReturnFulfillmentLineInput>? fulfillmentLines;
 
-  final String? amountToRefund;
+  final double? amountToRefund;
 
   final bool? includeShippingCosts;
 
@@ -6165,7 +6165,7 @@ class InputPageCreateInput {
 
   final String? title;
 
-  final String? content;
+  final Map<String, dynamic>? content;
 
   final List<InputAttributeValueInput>? attributes;
 
@@ -6342,7 +6342,7 @@ class InputPageInput {
 
   final String? title;
 
-  final String? content;
+  final Map<String, dynamic>? content;
 
   final List<InputAttributeValueInput>? attributes;
 
@@ -6463,7 +6463,7 @@ class InputPageTranslationInput {
 
   final String? title;
 
-  final String? content;
+  final Map<String, dynamic>? content;
 
   Map<String, dynamic> toJson() => _$InputPageTranslationInputToJson(this);
   int get hashCode {
@@ -6801,7 +6801,7 @@ class InputPaymentInput {
 
   final String? token;
 
-  final String? amount;
+  final double? amount;
 
   final String? returnUrl;
 
@@ -7310,7 +7310,7 @@ class InputPreorderSettingsInput {
 
   final int? globalThreshold;
 
-  final String? endDate;
+  final DateTime? endDate;
 
   Map<String, dynamic> toJson() => _$InputPreorderSettingsInputToJson(this);
   int get hashCode {
@@ -7344,7 +7344,7 @@ class InputPriceInput {
 
   final String currency;
 
-  final String amount;
+  final double amount;
 
   Map<String, dynamic> toJson() => _$InputPriceInputToJson(this);
   int get hashCode {
@@ -7504,13 +7504,13 @@ class InputProductChannelListingAddInput {
 
   final bool? isPublished;
 
-  final String? publicationDate;
+  final DateTime? publicationDate;
 
   final bool? visibleInListings;
 
   final bool? isAvailableForPurchase;
 
-  final String? availableForPurchaseDate;
+  final DateTime? availableForPurchaseDate;
 
   final List<String>? addVariants;
 
@@ -7689,7 +7689,7 @@ class InputProductCreateInput {
 
   final List<String>? collections;
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   final String? name;
 
@@ -8053,7 +8053,7 @@ class InputProductInput {
 
   final List<String>? collections;
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   final String? name;
 
@@ -8729,9 +8729,9 @@ class InputProductVariantChannelListingAddInput {
 
   final String channelId;
 
-  final String price;
+  final double price;
 
-  final String? costPrice;
+  final double? costPrice;
 
   final int? preorderThreshold;
 
@@ -9084,7 +9084,7 @@ class InputPublishableChannelListingInput {
 
   final bool? isPublished;
 
-  final String? publicationDate;
+  final DateTime? publicationDate;
 
   Map<String, dynamic> toJson() =>
       _$InputPublishableChannelListingInputToJson(this);
@@ -9158,7 +9158,7 @@ class InputSaleChannelListingAddInput {
 
   final String channelId;
 
-  final String discountValue;
+  final double discountValue;
 
   Map<String, dynamic> toJson() =>
       _$InputSaleChannelListingAddInputToJson(this);
@@ -9359,7 +9359,7 @@ class InputSaleInput {
   @JsonKey(unknownEnumValue: EnumDiscountValueTypeEnum.$unknown)
   final EnumDiscountValueTypeEnum? type;
 
-  final String? value;
+  final double? value;
 
   final List<String?>? products;
 
@@ -9369,9 +9369,9 @@ class InputSaleInput {
 
   final List<String?>? collections;
 
-  final String? startDate;
+  final DateTime? startDate;
 
-  final String? endDate;
+  final DateTime? endDate;
 
   Map<String, dynamic> toJson() => _$InputSaleInputToJson(this);
   int get hashCode {
@@ -9567,11 +9567,11 @@ class InputShippingMethodChannelListingAddInput {
 
   final String channelId;
 
-  final String? price;
+  final double? price;
 
-  final String? minimumOrderPrice;
+  final double? minimumOrderPrice;
 
-  final String? maximumOrderPrice;
+  final double? maximumOrderPrice;
 
   Map<String, dynamic> toJson() =>
       _$InputShippingMethodChannelListingAddInputToJson(this);
@@ -9762,7 +9762,7 @@ class InputShippingPriceInput {
 
   final String? name;
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   final String? minimumOrderWeight;
 
@@ -9895,7 +9895,7 @@ class InputShippingPriceTranslationInput {
 
   final String? name;
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   Map<String, dynamic> toJson() =>
       _$InputShippingPriceTranslationInputToJson(this);
@@ -10879,7 +10879,7 @@ class InputTranslationInput {
 
   final String? name;
 
-  final String? description;
+  final Map<String, dynamic>? description;
 
   Map<String, dynamic> toJson() => _$InputTranslationInputToJson(this);
   int get hashCode {
@@ -11098,9 +11098,9 @@ class InputVoucherChannelListingAddInput {
 
   final String channelId;
 
-  final String? discountValue;
+  final double? discountValue;
 
-  final String? minAmountSpent;
+  final double? minAmountSpent;
 
   Map<String, dynamic> toJson() =>
       _$InputVoucherChannelListingAddInputToJson(this);
@@ -11327,9 +11327,9 @@ class InputVoucherInput {
 
   final String? code;
 
-  final String? startDate;
+  final DateTime? startDate;
 
-  final String? endDate;
+  final DateTime? endDate;
 
   @JsonKey(unknownEnumValue: EnumDiscountValueTypeEnum.$unknown)
   final EnumDiscountValueTypeEnum? discountValueType;

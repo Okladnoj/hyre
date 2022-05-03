@@ -1,0 +1,9 @@
+query FetchProducts() {
+    products{
+        edges{
+            node{
+                id
+            }
+        }
+    }
+}
