@@ -2,30 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:hyre/graphql/queries/queries.graphql.dart';
-
-import 'graphql/schema.graphql.dart';
-
-final productsQuery = """
-{
-  products(first: 1, channel: "default-channel") {
-    edges {
-      node {
-        id
-        name
-        description
-      }
-    }
-  }
-}
-""";
+import 'package:hyre/graphql/job/job.graphql.dart';
 
 void main() async {
   final HttpLink httpLink = HttpLink(
-    'https://demo.saleor.io/graphql/',
+    'https://api.graphql.jobs/',
   );
 
-  ValueNotifier<GraphQLClient> client = ValueNotifier(
+  final client = ValueNotifier<GraphQLClient>(
     GraphQLClient(
       link: httpLink,
       cache: GraphQLCache(
@@ -33,14 +17,51 @@ void main() async {
       ),
     ),
   );
+
   runApp(GraphQLProvider(
     client: client,
-    child: const MyApp(),
+    child: MyApp(client: client),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final ValueNotifier<GraphQLClient> client;
+
+  const MyApp({
+    Key? key,
+    required this.client,
+  }) : super(key: key);
+
+  Future<void> createNewJob() async {
+    log('-------> Create New Job');
+    final mutationOptions = MutationOptions<MutationCreateNewJob>(
+      document: MUTATION_CREATE_NEW_JOB,
+      variables: VariablesMutationCreateNewJob(
+        title: 'AAA 1234',
+        commitmentId: 'cjtu8esth000z0824x00wtp1i',
+        companyName: 'AAA11111',
+        locationNames: 'locationNames',
+        userEmail: 'userEmail@mail.net',
+        description: 'description',
+        applyUrl: 'applyUrl',
+      ).toJson(),
+      parserFn: (Map<String, dynamic> data) {
+        return MutationCreateNewJob.fromJson(data);
+      },
+    );
+    final result = await client.value.mutate(mutationOptions);
+    log('<------- Job Created');
+    log((result.parsedData?.toJson()).toString());
+    log('-------> Update Jobs');
+    final queryOptions = QueryOptions(
+      document: QUERY_GET_JOBS,
+      parserFn: (Map<String, dynamic> data) {
+        return QueryGetJobs.fromJson(data);
+      },
+    );
+    await client.value.query(queryOptions);
+    log('<------- Jobs Updated');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,53 +71,46 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _body() {
-    final mainQuery = QUERY_FETCH_PRODUCTS;
-    final stringQuery = gql(productsQuery);
     return Center(
-      child: Query<QueryFetchProducts>(
-          options: QueryOptions(
-              document: mainQuery,
-              variables: VariablesQueryFetchProducts(
-                      first: 1, channel: "default-channel")
-                  .toJson(),
-              parserFn: (Map<String, dynamic> data) {
-                return QueryFetchProducts.fromJson(data);
-              }),
-          builder: (result, {fetchMore, refetch}) {
-            if (result.hasException) {
-              log(result.exception.toString());
-              return const Text("ERROR");
-            }
-            if (result.isLoading) {
-              return const CircularProgressIndicator();
-            }
-            log(result.data.toString());
-            final parsedData = QueryFetchProducts.fromJson(result.data!);
-            log(parsedData.toJson().toString());
-            
-            log((result.parsedData).toString());
+      child: Query<QueryGetJobs>(
+        options: QueryOptions(
+          document: QUERY_GET_JOBS,
+          parserFn: (Map<String, dynamic> data) {
+            return QueryGetJobs.fromJson(data);
+          },
+        ),
+        builder: (result, {fetchMore, refetch}) {
+          if (result.hasException) {
+            return const Text("ERROR");
+          }
+          if (result.isLoading) {
+            return const CircularProgressIndicator();
+          }
 
-            // final res = (result.parsedData == null).toString();
-            // log(res);
+          log((result.parsedData?.toJson()).toString());
 
-            return const Text("qwe");
-          }),
+          return ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: ElevatedButton(
+                  onPressed: createNewJob,
+                  child: const Text('Create New Job'),
+                ),
+              ),
+              ...(result.parsedData?.jobs ?? []).map((e) {
+                return ElevatedButton(
+                  onPressed: () {},
+                  child: Text([
+                    e.title,
+                    e.remotes.map((e) => e.name).join(', '),
+                  ].join('\n')),
+                );
+              }).toList()
+            ],
+          );
+        },
+      ),
     );
   }
 }
-// return Center(
-//       child: Query(
-//           options: QueryOptions(document: gql(productsQuery)),
-//           builder: (result, {fetchMore, refetch}) {
-//             if (result.hasException) {
-//               return const Text("ERROR");
-//             }
-//             if (result.isLoading) {
-//               return const CircularProgressIndicator();
-//             }
-//             log(result.data.toString());
-//             // result.parsedData;
-
-//             return const Text("qwe");
-//           }),
-//     );
