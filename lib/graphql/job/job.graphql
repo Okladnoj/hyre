@@ -23,6 +23,11 @@ query GetJobs {
   }
 }
 
+type Query {
+  jobs: [Job!]!
+  jobsFiltred(name: String!): [Job!]!
+}
+
 subscription GetJobs {
   jobs {
     title
@@ -31,12 +36,6 @@ subscription GetJobs {
     }
   }
 }
-
-type Query {
-  jobs: [Job!]!
-  jobsFiltred(name: String!): [Job!]!
-}
-
 type Subscription {
   jobs: [Job!]!
   jobsFiltred(name: String!): [Job!]!
