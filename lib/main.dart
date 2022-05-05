@@ -53,30 +53,30 @@ class MyApp extends StatelessWidget {
     log('<------- Job Created');
     log((result.parsedData?.toJson()).toString());
     log('-------> Update Jobs');
-    final queryOptions = QueryOptions(
-      document: QUERY_GET_JOBS,
+    final queryOptions = SubscriptionOptions(
+      document: SUBSCRIPTION_GET_JOBS,
       parserFn: (Map<String, dynamic> data) {
-        return QueryGetJobs.fromJson(data);
+        return SubscriptionGetJobs.fromJson(data);
       },
     );
-    await client.value.query(queryOptions);
+    final qResult = client.value.subscribe(queryOptions);
     log('<------- Jobs Updated');
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(body: _body()),
+      home: Scaffold(body: _body(context)),
     );
   }
 
-  Widget _body() {
+  Widget _body(BuildContext context) {
     return Center(
-      child: Query<QueryGetJobs>(
-        options: QueryOptions(
-          document: QUERY_GET_JOBS,
+      child: Subscription<SubscriptionGetJobs>(
+        options: SubscriptionOptions(
+          document: SUBSCRIPTION_GET_JOBS,
           parserFn: (Map<String, dynamic> data) {
-            return QueryGetJobs.fromJson(data);
+            return SubscriptionGetJobs.fromJson(data);
           },
         ),
         builder: (result, {fetchMore, refetch}) {

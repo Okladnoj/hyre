@@ -23,7 +23,21 @@ query GetJobs {
   }
 }
 
+subscription GetJobs {
+  jobs {
+    title
+    remotes {
+      name
+    }
+  }
+}
+
 type Query {
+  jobs: [Job!]!
+  jobsFiltred(name: String!): [Job!]!
+}
+
+type Subscription {
   jobs: [Job!]!
   jobsFiltred(name: String!): [Job!]!
 }

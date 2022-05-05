@@ -209,6 +209,217 @@ extension UtilityExtensionQueryGetJobs$jobs$remotes
 }
 
 @JsonSerializable(explicitToJson: true)
+class SubscriptionGetJobs {
+  SubscriptionGetJobs({required this.jobs, required this.$__typename});
+
+  @override
+  factory SubscriptionGetJobs.fromJson(Map<String, dynamic> json) =>
+      _$SubscriptionGetJobsFromJson(json);
+
+  final List<SubscriptionGetJobs$jobs> jobs;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$SubscriptionGetJobsToJson(this);
+  int get hashCode {
+    final l$jobs = jobs;
+    final l$$__typename = $__typename;
+    return Object.hashAll(
+        [Object.hashAll(l$jobs.map((v) => v)), l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is SubscriptionGetJobs) || runtimeType != other.runtimeType)
+      return false;
+    final l$jobs = jobs;
+    final lOther$jobs = other.jobs;
+    if (l$jobs.length != lOther$jobs.length) return false;
+    for (int i = 0; i < l$jobs.length; i++) {
+      final l$jobs$entry = l$jobs[i];
+      final lOther$jobs$entry = lOther$jobs[i];
+      if (l$jobs$entry != lOther$jobs$entry) return false;
+    }
+
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtensionSubscriptionGetJobs on SubscriptionGetJobs {
+  SubscriptionGetJobs copyWith(
+          {List<SubscriptionGetJobs$jobs>? jobs, String? $__typename}) =>
+      SubscriptionGetJobs(
+          jobs: jobs == null ? this.jobs : jobs,
+          $__typename: $__typename == null ? this.$__typename : $__typename);
+}
+
+const SUBSCRIPTION_GET_JOBS = const DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'GetJobs'),
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'jobs'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'title'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'remotes'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'name'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+
+@JsonSerializable(explicitToJson: true)
+class SubscriptionGetJobs$jobs {
+  SubscriptionGetJobs$jobs(
+      {required this.title, required this.remotes, required this.$__typename});
+
+  @override
+  factory SubscriptionGetJobs$jobs.fromJson(Map<String, dynamic> json) =>
+      _$SubscriptionGetJobs$jobsFromJson(json);
+
+  final String title;
+
+  final List<SubscriptionGetJobs$jobs$remotes> remotes;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$SubscriptionGetJobs$jobsToJson(this);
+  int get hashCode {
+    final l$title = title;
+    final l$remotes = remotes;
+    final l$$__typename = $__typename;
+    return Object.hashAll(
+        [l$title, Object.hashAll(l$remotes.map((v) => v)), l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is SubscriptionGetJobs$jobs) ||
+        runtimeType != other.runtimeType) return false;
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) return false;
+    final l$remotes = remotes;
+    final lOther$remotes = other.remotes;
+    if (l$remotes.length != lOther$remotes.length) return false;
+    for (int i = 0; i < l$remotes.length; i++) {
+      final l$remotes$entry = l$remotes[i];
+      final lOther$remotes$entry = lOther$remotes[i];
+      if (l$remotes$entry != lOther$remotes$entry) return false;
+    }
+
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtensionSubscriptionGetJobs$jobs on SubscriptionGetJobs$jobs {
+  SubscriptionGetJobs$jobs copyWith(
+          {String? title,
+          List<SubscriptionGetJobs$jobs$remotes>? remotes,
+          String? $__typename}) =>
+      SubscriptionGetJobs$jobs(
+          title: title == null ? this.title : title,
+          remotes: remotes == null ? this.remotes : remotes,
+          $__typename: $__typename == null ? this.$__typename : $__typename);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SubscriptionGetJobs$jobs$remotes {
+  SubscriptionGetJobs$jobs$remotes(
+      {required this.name, required this.$__typename});
+
+  @override
+  factory SubscriptionGetJobs$jobs$remotes.fromJson(
+          Map<String, dynamic> json) =>
+      _$SubscriptionGetJobs$jobs$remotesFromJson(json);
+
+  final String name;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$SubscriptionGetJobs$jobs$remotesToJson(this);
+  int get hashCode {
+    final l$name = name;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$name, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is SubscriptionGetJobs$jobs$remotes) ||
+        runtimeType != other.runtimeType) return false;
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtensionSubscriptionGetJobs$jobs$remotes
+    on SubscriptionGetJobs$jobs$remotes {
+  SubscriptionGetJobs$jobs$remotes copyWith(
+          {String? name, String? $__typename}) =>
+      SubscriptionGetJobs$jobs$remotes(
+          name: name == null ? this.name : name,
+          $__typename: $__typename == null ? this.$__typename : $__typename);
+}
+
+@JsonSerializable(explicitToJson: true)
 class VariablesMutationCreateNewJob {
   VariablesMutationCreateNewJob(
       {required this.title,

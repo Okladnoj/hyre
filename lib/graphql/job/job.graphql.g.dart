@@ -50,6 +50,55 @@ Map<String, dynamic> _$QueryGetJobs$jobs$remotesToJson(
       '__typename': instance.$__typename,
     };
 
+SubscriptionGetJobs _$SubscriptionGetJobsFromJson(Map<String, dynamic> json) =>
+    SubscriptionGetJobs(
+      jobs: (json['jobs'] as List<dynamic>)
+          .map((e) =>
+              SubscriptionGetJobs$jobs.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$SubscriptionGetJobsToJson(
+        SubscriptionGetJobs instance) =>
+    <String, dynamic>{
+      'jobs': instance.jobs.map((e) => e.toJson()).toList(),
+      '__typename': instance.$__typename,
+    };
+
+SubscriptionGetJobs$jobs _$SubscriptionGetJobs$jobsFromJson(
+        Map<String, dynamic> json) =>
+    SubscriptionGetJobs$jobs(
+      title: json['title'] as String,
+      remotes: (json['remotes'] as List<dynamic>)
+          .map((e) => SubscriptionGetJobs$jobs$remotes.fromJson(
+              e as Map<String, dynamic>))
+          .toList(),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$SubscriptionGetJobs$jobsToJson(
+        SubscriptionGetJobs$jobs instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'remotes': instance.remotes.map((e) => e.toJson()).toList(),
+      '__typename': instance.$__typename,
+    };
+
+SubscriptionGetJobs$jobs$remotes _$SubscriptionGetJobs$jobs$remotesFromJson(
+        Map<String, dynamic> json) =>
+    SubscriptionGetJobs$jobs$remotes(
+      name: json['name'] as String,
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$SubscriptionGetJobs$jobs$remotesToJson(
+        SubscriptionGetJobs$jobs$remotes instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      '__typename': instance.$__typename,
+    };
+
 VariablesMutationCreateNewJob _$VariablesMutationCreateNewJobFromJson(
         Map<String, dynamic> json) =>
     VariablesMutationCreateNewJob(
